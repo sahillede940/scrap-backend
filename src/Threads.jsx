@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
 
+const URL = 'https://scrap-back.onrender.com'
+
 const Loader = () => (
   <div className="loader-container">
     <div className="spinner"></div>
@@ -42,9 +44,12 @@ export function ThreadSearchComponent() {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post(process.env.URL + "/search-posts/", {
-        query: searchQuery,
-      });
+      const response = await axios.post(
+        `${URL}/search-posts/`,
+        {
+          query: searchQuery,
+        }
+      );
       setThreads(response.data.posts);
     } catch (error) {
       console.error(error);
@@ -57,9 +62,12 @@ export function ThreadSearchComponent() {
     try {
       // Simulate network delay for demonstration
       // await new Promise((resolve) => setTimeout(resolve, 1000));
-      const response = await axios.post(process.env.URL + "/search-posts/", {
-        query: searchQuery,
-      });
+      const response = await axios.post(
+        `${URL}/search-posts/`,
+        {
+          query: searchQuery,
+        }
+      );
       setThreads(response.data.posts);
     } catch (error) {
       console.error(error);
