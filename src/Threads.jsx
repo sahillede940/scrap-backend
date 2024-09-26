@@ -11,29 +11,29 @@ const Loader = () => (
 const mockThreads = [
   {
     id: 1,
-    title: 'React Hooks: Best Practices',
+    title: "React Hooks: Best Practices",
     description:
-      'What are your favorite React hooks and how do you use them effectively? Share your experiences with useState, useEffect, and custom hooks in building complex components. Also, any tips on performance optimization?',
-    author: 'Alice',
+      "What are your favorite React hooks and how do you use them effectively? Share your experiences with useState, useEffect, and custom hooks in building complex components. Also, any tips on performance optimization?",
+    author: "Alice",
   },
   {
     id: 2,
-    title: 'CSS-in-JS vs. Traditional CSS',
+    title: "CSS-in-JS vs. Traditional CSS",
     description:
-      'Pros and cons of using CSS-in-JS libraries compared to traditional CSS approaches? Let\'s discuss the impact on performance, scalability, and developer experience. Do you prefer styled-components, emotion, or sticking with plain CSS?',
-    author: 'Bob',
+      "Pros and cons of using CSS-in-JS libraries compared to traditional CSS approaches? Let's discuss the impact on performance, scalability, and developer experience. Do you prefer styled-components, emotion, or sticking with plain CSS?",
+    author: "Bob",
   },
   {
     id: 3,
-    title: 'TypeScript vs JavaScript',
+    title: "TypeScript vs JavaScript",
     description:
-      'Is it worth switching from JavaScript to TypeScript for large-scale projects? How does TypeScript improve code quality and maintainability? Share your migration stories and whether the benefits outweighed the learning curve.',
-    author: 'Charlie',
+      "Is it worth switching from JavaScript to TypeScript for large-scale projects? How does TypeScript improve code quality and maintainability? Share your migration stories and whether the benefits outweighed the learning curve.",
+    author: "Charlie",
   },
 ];
 
 export function ThreadSearchComponent() {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [threads, setThreads] = useState(mockThreads);
   const [loading, setLoading] = useState(false);
   const [expandedThreads, setExpandedThreads] = useState({});
@@ -42,7 +42,7 @@ export function ThreadSearchComponent() {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post(process.env.URL + '/search-posts/', {
+      const response = await axios.post(process.env.URL + "/search-posts/", {
         query: searchQuery,
       });
       setThreads(response.data.posts);
@@ -57,7 +57,7 @@ export function ThreadSearchComponent() {
     try {
       // Simulate network delay for demonstration
       // await new Promise((resolve) => setTimeout(resolve, 1000));
-      const response = await axios.post('http://127.0.0.1:8000/search-posts/', {
+      const response = await axios.post(process.env.URL + "/search-posts/", {
         query: searchQuery,
       });
       setThreads(response.data.posts);
@@ -106,9 +106,10 @@ export function ThreadSearchComponent() {
             const isExpanded = expandedThreads[thread.id];
             const fullText = thread.description;
             const shouldTruncate = fullText.length > maxLength;
-            const displayText = shouldTruncate && !isExpanded
-              ? fullText.substring(0, maxLength) + '...'
-              : fullText;
+            const displayText =
+              shouldTruncate && !isExpanded
+                ? fullText.substring(0, maxLength) + "..."
+                : fullText;
 
             return (
               <div key={thread.id} className="thread-card">
@@ -123,7 +124,7 @@ export function ThreadSearchComponent() {
                       onClick={() => toggleExpand(thread.id)}
                       className="read-more-button"
                     >
-                      {isExpanded ? 'Read Less' : 'Read More'}
+                      {isExpanded ? "Read Less" : "Read More"}
                     </button>
                   )}
                 </div>
