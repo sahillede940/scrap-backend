@@ -42,7 +42,7 @@ export function ThreadSearchComponent() {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post('http://127.0.0.1:8000/search-posts/', {
+      const response = await axios.post(process.env.URL + '/search-posts/', {
         query: searchQuery,
       });
       setThreads(response.data.posts);
