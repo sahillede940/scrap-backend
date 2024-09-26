@@ -78,7 +78,7 @@ export function ThreadSearchComponent() {
   useEffect(() => {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchQuery]);
+  }, []);
 
   const toggleExpand = (id) => {
     setExpandedThreads((prevState) => ({
@@ -92,7 +92,7 @@ export function ThreadSearchComponent() {
   return (
     <div className="container">
       <h1 className="title">Thread Search</h1>
-      <form onSubmit={handleSearch} className="search-form">
+      <form className="search-form">
         <div className="search-input-container">
           <input
             type="text"
@@ -101,7 +101,7 @@ export function ThreadSearchComponent() {
             onChange={(e) => setSearchQuery(e.target.value)}
             className="search-input"
           />
-          <button type="submit" className="search-button">
+          <button onClick={handleSearch} className="search-button">
             Search
           </button>
         </div>
